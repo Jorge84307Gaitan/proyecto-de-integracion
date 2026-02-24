@@ -26,8 +26,7 @@ def render_header() -> None:
             unsafe_allow_html=True,
         )
 
-
-def render_home() -> None:
+def render_home() -> bool:
     st.markdown(
         "<h2 style='color: white; text-align: center;'>Servicios Urban Eye</h2>",
         unsafe_allow_html=True,
@@ -36,28 +35,23 @@ def render_home() -> None:
     c1, c2, c3 = st.columns(3)
 
     with c1:
-        st.markdown(
-            """<div class="stCard"><h3>Reportes</h3><p>Informa siniestros, baches o """
-            """fallas en semaforos en tiempo real.</p></div>""",
-            unsafe_allow_html=True,
+        click_reportes = st.button(
+            "REPORTES\n\nVer incidentes registrados",
+            key="card_reportes",
+            use_container_width=True,
         )
 
     with c2:
         st.markdown(
-            """<div class="stCard"><h3>Analitica</h3><p>Consulta el estado de la movilidad """
-            """procesado por inteligencia de datos.</p></div>""",
+            """<div class="stCard"><h3>Analitica</h3><p>Consulta el estado de la movilidad.</p></div>""",
             unsafe_allow_html=True,
         )
 
     with c3:
         st.markdown(
-            """<div class="stCard"><h3>EAN Labs</h3><p>Desarrollado bajo estandares de """
-            """sostenibilidad e innovacion academica.</p></div>""",
+            """<div class="stCard"><h3>EAN Labs</h3><p>Innovacion academica.</p></div>""",
             unsafe_allow_html=True,
         )
 
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.image(
-        "https://images.unsplash.com/photo-1545147986-a9d6f210df77?auto=format&fit=crop&q=80&w=1200",
-        caption="Centro de Control Urbano",
-    )
+    return click_reportes
+

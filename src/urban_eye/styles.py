@@ -37,5 +37,24 @@
     text-align: center !important;
     margin-bottom: 40px !important;
 }
+
+/* Tarjeta clickeable de Reportes */
+div[data-testid="stButton"] > button {
+    min-height: 250px;
+    border-radius: 20px !important;
+    border: 2px solid #00a1df !important;
+    background-color: #004a99 !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+    white-space: pre-line;
+}
+
+/* Boton normal (ej: Guardar reporte) */
+div[data-testid="stFormSubmitButton"] > button,
+button[kind="primary"] {
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+}
 </style>
 """
