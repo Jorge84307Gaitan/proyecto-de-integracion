@@ -1,0 +1,28 @@
+[
+  {
+    "_id": "9f1ad03f-731d-4314-88d7-41ffdac7943e",
+    "tipo": "Accidente",
+    "descripcion": "acciente en la calle 13",
+    "imageUrl": null,
+    "createdBy": {
+      "id": "52fc4bdf-5e38-4f20-97fd-0320ff667f16",
+      "name": "Jorge Steven Gaitan Barreto",
+      "email": "jgaitanbri@gmail.com"
+    },
+    "createdAt": "2026-02-28T05:40:48.181Z",
+    "updatedAt": "2026-02-28T05:40:48.181Z"
+  },
+  {
+    "_id": "9a10ed7a-79cc-4c62-a9bc-f765d70d6bf2",
+    "tipo": "Bache",
+    "descripcion": "bache gigante",
+    "imageUrl": "http://localhost:4000/uploads/1772258097818-f3e45aed-5ccc-4bdc-bc81-9a3b33bd2e06.jpg",
+    "createdBy": {
+      "id": "52fc4bdf-5e38-4f20-97fd-0320ff667f16",
+      "name": "Jorge Steven Gaitan Barreto",
+      "email": "jgaitanbri@gmail.com"
+    },
+    "createdAt": "2026-02-28T05:54:57.843Z",
+    "updatedAt": "2026-02-28T05:54:57.843Z"
+  }
+]

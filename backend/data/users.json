@@ -1,0 +1,16 @@
+[
+  {
+    "id": "f138d372-713c-4d82-9cf3-6d86dd070c0a",
+    "name": "Jorge Steven ",
+    "email": "jgaitan526@gmail.com",
+    "passwordHash": "$2b$10$NSFl/EquJeVdxpXgMywJfusHI2ypozGdQIfeEDWH7WOcxQ5u4sTQW",
+    "createdAt": "2026-02-28T05:12:37.491Z"
+  },
+  {
+    "id": "52fc4bdf-5e38-4f20-97fd-0320ff667f16",
+    "name": "Jorge Steven Gaitan Barreto",
+    "email": "jgaitanbri@gmail.com",
+    "passwordHash": "$2b$10$XZKZ6ki1vuI6RtnprGdq1.cgSn8ioWdQJOhDtUZX363M9KEzV.STa",
+    "createdAt": "2026-02-28T05:22:42.766Z"
+  }
+]

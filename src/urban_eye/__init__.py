@@ -1,1 +1,0 @@
-﻿"""Urban Eye package."""

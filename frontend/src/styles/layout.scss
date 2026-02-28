@@ -1,0 +1,170 @@
+@use "./variables" as v;
+
+.app-shell {
+  min-height: 100vh;
+  background: v.$bg-main;
+  color: v.$text;
+  padding: 16px;
+}
+
+.app-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ue-header {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  background: linear-gradient(90deg, v.$primary 0%, v.$accent 100%);
+  border-radius: v.$radius-xl;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.ue-brand {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.ue-logo {
+  width: 90px;
+  height: auto;
+  object-fit: contain;
+}
+
+.ue-title-block h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.ue-title-block p {
+  margin: 4px 0 0;
+  opacity: 0.9;
+}
+
+.ue-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.ue-nav a {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+
+.ue-nav a.active {
+  border-color: v.$accent;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.ue-auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title {
+  text-align: center;
+  margin: 8px 0 24px;
+}
+
+.service-card {
+  border-radius: v.$radius-xl !important;
+  border: 2px solid v.$accent !important;
+  background: v.$primary !important;
+  color: #111111 !important;
+  box-shadow: v.$shadow-deep !important;
+  min-height: 250px;
+}
+
+.service-card .ant-card-body {
+  min-height: 246px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.service-card h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: 
+  #f1f1f1 !important;
+}
+
+.service-card p {
+  margin: 0;
+  opacity: 0.9;
+  color: #f8f8f8 !important;
+}
+
+.clickable-card {
+  cursor: pointer;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 16px;
+}
+
+.auth-card {
+  max-width: 540px;
+  margin: 200px auto 0;
+}
+
+.auth-brand {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.auth-logo {
+  width: 90px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+
+.auth-welcome-banner {
+  background: linear-gradient(90deg, v.$primary 0%, v.$accent 100%);
+  border-radius: v.$radius-xl;
+  padding: 18px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.auth-welcome-logo {
+  width: 72px;
+  height: auto;
+  margin-bottom: 6px;
+}
+
+.auth-welcome-banner h2 {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.auth-welcome-banner p {
+  margin: 0;
+  opacity: 0.95;
+  color: #fff;
+}
+
+
+@media (max-width: 960px) {
+  .ue-header {
+    grid-template-columns: 1fr;
+  }
+
+  .reports-grid {
+    grid-template-columns: 1fr;
+  }
+}
