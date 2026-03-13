@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AppHeader from "./components/AppHeader";
 import HomePage from "./pages/HomePage";
 import ReportsPage from "./pages/ReportsPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
 import LoginPage from "./pages/LoginPage";
 import { useAuth } from "./context/AuthContext";
 import "./styles/layout.scss";
@@ -20,6 +21,7 @@ function ProtectedLayout() {
         <Routes>
           <Route path="inicio" element={<HomePage />} />
           <Route path="reportes" element={<ReportsPage />} />
+          <Route path="analitica" element={<AnalyticsPage />} />
           <Route path="" element={<Navigate to="inicio" replace />} />
         </Routes>
       </main>

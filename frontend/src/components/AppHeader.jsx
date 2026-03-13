@@ -27,6 +27,8 @@ export default function AppHeader() {
         <NavLink to="/menu/inicio" end>
           Inicio
         </NavLink>
+        <NavLink to="/menu/reportes">Reportes</NavLink>
+        <NavLink to="/menu/analitica">Analitica</NavLink>
       </nav>
 
       <div className="ue-auth">

@@ -15,10 +15,12 @@ export default function HomePage() {
           </Link>
         </Col>
         <Col xs={24} md={8}>
-          <Card className="service-card">
-            <h3>Analitica</h3>
-            <p>Consulta el estado de la movilidad.</p>
-          </Card>
+          <Link to="/menu/analitica">
+            <Card className="service-card clickable-card">
+              <h3>Analitica</h3>
+              <p>Consulta el estado de la movilidad.</p>
+            </Card>
+          </Link>
         </Col>
         <Col xs={24} md={8}>
           <Card className="service-card">

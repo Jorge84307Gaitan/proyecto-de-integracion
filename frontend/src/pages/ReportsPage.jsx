@@ -1,34 +1,15 @@
 import { useEffect, useState } from "react";
-import {
-  Alert,
-  Button,
-  Card,
-  Form,
-  Input,
-  Select,
-  Space,
-  Table,
-  Tag,
-  Upload,
-} from "antd";
-import { UploadOutlined } from "@ant-design/icons";
-import { createIncident, listIncidents } from "../services/incidents.service";
+import { Alert, Button, Card, Select, Space, Table, Tag } from "antd";
+import { downloadPdf, listIncidents } from "../services/incidents.service";
 import { useAuth } from "../context/AuthContext";
 
 export default function ReportsPage() {
   const [loading, setLoading] = useState(false);
-  const [saving, setSaving] = useState(false);
   const [incidents, setIncidents] = useState([]);
   const [error, setError] = useState("");
-  const { token, isAuthenticated } = useAuth();
-  const [form] = Form.useForm();
-
-  const normalizeUpload = (event) => {
-    if (Array.isArray(event)) {
-      return event;
-    }
-    return event?.fileList || [];
-  };
+  const [downloadingPdf, setDownloadingPdf] = useState(false);
+  const [period, setPeriod] = useState("weekly");
+  const { token } = useAuth();
 
   const fetchIncidents = async () => {
     try {
@@ -46,81 +27,54 @@ export default function ReportsPage() {
     fetchIncidents();
   }, []);
 
-  const onFinish = async (values) => {
-    if (!isAuthenticated) {
-      setError("Debes iniciar sesion para crear reportes");
-      return;
-    }
+  const onDownloadPdf = async () => {
     try {
-      setSaving(true);
+      setDownloadingPdf(true);
       setError("");
-      const imageFile = values.image?.[0]?.originFileObj;
-      await createIncident({
-        token,
-        tipo: values.tipo,
-        descripcion: values.descripcion,
-        imageFile,
-      });
-      form.resetFields();
-      await fetchIncidents();
+
+      const blob = await downloadPdf({ token, period });
+      const url = window.URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+      const a = document.createElement("a");
+      a.href = url;
+
+      const suffix = period === "daily" ? "diario" : period === "monthly" ? "mensual" : "semanal";
+      a.download = `reporte-${suffix}-${new Date().toISOString().slice(0, 10)}.pdf`;
+
+      a.click();
+      window.URL.revokeObjectURL(url);
     } catch (err) {
-      setError(err?.response?.data?.message || "No se pudo guardar el reporte");
+      setError(err?.response?.data?.message || "No se pudo descargar el PDF");
     } finally {
-      setSaving(false);
+      setDownloadingPdf(false);
     }
   };
 
   return (
-    <section className="reports-grid">
-      <Card title="Reporte de incidente">
-        {error && <Alert type="error" message={error} showIcon style={{ marginBottom: 16 }} />}
-
-        <Form layout="vertical" form={form} onFinish={onFinish}>
-          <Form.Item
-            name="tipo"
-            label="Tipo de incidente"
-            rules={[{ required: true, message: "Selecciona un tipo de incidente" }]}
-          >
+    <section>
+      <Card
+        title="Reportes registrados"
+        extra={
+          <Space wrap>
             <Select
+              value={period}
+              onChange={setPeriod}
+              style={{ width: 160 }}
               options={[
-                { value: "Accidente", label: "Accidente" },
-                { value: "Bache", label: "Bache" },
-                { value: "Semaforo", label: "Semaforo" },
+                { value: "daily", label: "Diario" },
+                { value: "weekly", label: "Semanal" },
+                { value: "monthly", label: "Mensual" },
               ]}
             />
-          </Form.Item>
-
-          <Form.Item
-            name="descripcion"
-            label="Descripcion"
-            rules={[{ required: true, message: "Describe el incidente" }]}
-          >
-            <Input.TextArea rows={4} />
-          </Form.Item>
-
-          <Form.Item
-            name="image"
-            label="Imagen (opcional)"
-            valuePropName="fileList"
-            getValueFromEvent={normalizeUpload}
-          >
-            <Upload beforeUpload={() => false} maxCount={1}>
-              <Button icon={<UploadOutlined />}>Seleccionar archivo</Button>
-            </Upload>
-          </Form.Item>
-
-          <Space>
-            <Button type="primary" htmlType="submit" loading={saving}>
-              Guardar reporte
+            <Button onClick={onDownloadPdf} loading={downloadingPdf}>
+              Descargar PDF
             </Button>
             <Button onClick={fetchIncidents} loading={loading}>
               Recargar
             </Button>
           </Space>
-        </Form>
-      </Card>
-
-      <Card title="Reportes registrados">
+        }
+      >
+        {error && <Alert type="error" message={error} showIcon style={{ marginBottom: 16 }} />}
         <Table
           rowKey="_id"
           loading={loading}

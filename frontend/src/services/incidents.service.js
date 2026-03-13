@@ -5,13 +5,19 @@ export async function listIncidents() {
   return data;
 }
 
+export async function downloadPdf({ token, period }) {
+  const response = await api.get(`/incidents/export.pdf?period=${period}`, {
+    ...authHeaders(token),
+    responseType: "blob",
+  });
+  return response.data;
+}
+
 export async function createIncident({ token, tipo, descripcion, imageFile }) {
   const formData = new FormData();
   formData.append("tipo", tipo);
   formData.append("descripcion", descripcion);
-  if (imageFile) {
-    formData.append("image", imageFile);
-  }
+  if (imageFile) formData.append("image", imageFile);
 
   const { data } = await api.post("/incidents", formData, {
     ...authHeaders(token),

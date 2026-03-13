@@ -24,5 +24,44 @@
     },
     "createdAt": "2026-02-28T05:54:57.843Z",
     "updatedAt": "2026-02-28T05:54:57.843Z"
+  },
+  {
+    "_id": "1c311f50-66b6-4faf-b219-785db3cbc685",
+    "tipo": "Accidente",
+    "descripcion": "bache",
+    "imageUrl": "http://localhost:4000/uploads/1772293060494-Captura_de_pantalla_2025-09-26_105129.png",
+    "createdBy": {
+      "id": "52fc4bdf-5e38-4f20-97fd-0320ff667f16",
+      "name": "Jorge Steven Gaitan Barreto",
+      "email": "jgaitanbri@gmail.com"
+    },
+    "createdAt": "2026-02-28T15:37:40.508Z",
+    "updatedAt": "2026-02-28T15:37:40.508Z"
+  },
+  {
+    "_id": "6294f922-4d3f-4f31-8c34-572934cb0ab6",
+    "tipo": "Bache",
+    "descripcion": "hhshasha",
+    "imageUrl": "http://localhost:4000/uploads/1772328141969-Captura_de_pantalla_2025-09-26_105129.png",
+    "createdBy": {
+      "id": "3a768408-1709-4cd9-a473-5a3f6771b25a",
+      "name": "mar",
+      "email": "marro23@gmail.com"
+    },
+    "createdAt": "2026-03-01T01:22:21.979Z",
+    "updatedAt": "2026-03-01T01:22:21.979Z"
+  },
+  {
+    "_id": "5b40b9da-1bdd-4a5e-a413-fbdf1a70d8ec",
+    "tipo": "Bache",
+    "descripcion": "Bache ",
+    "imageUrl": null,
+    "createdBy": {
+      "id": "52fc4bdf-5e38-4f20-97fd-0320ff667f16",
+      "name": "Jorge Steven Gaitan Barreto",
+      "email": "jgaitanbri@gmail.com"
+    },
+    "createdAt": "2026-03-13T01:16:00.869Z",
+    "updatedAt": "2026-03-13T01:16:00.869Z"
   }
 ]

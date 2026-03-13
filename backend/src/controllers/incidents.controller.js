@@ -1,5 +1,12 @@
 import { randomUUID } from "crypto";
 import { readIncidents, writeIncidents } from "../storage/localStore.js";
+import {
+  getCurrentDayRange,
+  getCurrentWeekRange,
+  getCurrentMonthRange,
+  filterIncidentsByRange,
+} from "../services/reports.service.js";
+import { buildIncidentsPdf } from "../utils/pdfReport.js";
 
 export async function getIncidents(_req, res, next) {
   try {
@@ -40,6 +47,48 @@ export async function createIncident(req, res, next) {
     incidents.push(incident);
     await writeIncidents(incidents);
     res.status(201).json(incident);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function exportIncidentsPdf(req, res, next) {
+  try {
+    const period = String(req.query.period || "weekly").toLowerCase();
+
+    let start;
+    let end;
+    let title = "Reporte Semanal de Incidentes";
+    let slug = "semanal";
+
+    if (period === "daily") {
+      ({ start, end } = getCurrentDayRange());
+      title = "Reporte Diario de Incidentes";
+      slug = "diario";
+    } else if (period === "monthly") {
+      ({ start, end } = getCurrentMonthRange());
+      title = "Reporte Mensual de Incidentes";
+      slug = "mensual";
+    } else {
+      ({ start, end } = getCurrentWeekRange());
+    }
+
+    const incidents = await readIncidents();
+    const filtered = filterIncidentsByRange(incidents, start, end);
+
+    const pdfBuffer = await buildIncidentsPdf({
+      incidents: filtered,
+      start,
+      end,
+      title,
+    });
+
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename="reporte-${slug}-${new Date().toISOString().slice(0, 10)}.pdf"`
+    );
+    res.send(pdfBuffer);
   } catch (error) {
     next(error);
   }

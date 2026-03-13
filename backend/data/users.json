@@ -12,5 +12,12 @@
     "email": "jgaitanbri@gmail.com",
     "passwordHash": "$2b$10$XZKZ6ki1vuI6RtnprGdq1.cgSn8ioWdQJOhDtUZX363M9KEzV.STa",
     "createdAt": "2026-02-28T05:22:42.766Z"
+  },
+  {
+    "id": "3a768408-1709-4cd9-a473-5a3f6771b25a",
+    "name": "mar",
+    "email": "marro23@gmail.com",
+    "passwordHash": "$2b$10$APkgcJdJwPa7jF9DVmi5i.urTjxNrYRaTj8aLByV1CCuAOY62JnyO",
+    "createdAt": "2026-03-01T01:21:02.108Z"
   }
 ]
